@@ -23,6 +23,13 @@
 			<version>3.0.0-M7</version>
 			<type>maven-plugin</type>
 		</dependency>
+
+		 <!-- JUnit 5 Plugin for PITest -->
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-junit5-plugin</artifactId>
+            <version>1.2.2</version>
+        </dependency>
 	</dependencies>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -44,6 +51,24 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+			<plugin>
+    			<groupId>org.pitest</groupId>
+    			<artifactId>pitest-maven</artifactId>
+    			<version>1.17.0</version>
+    			<configuration>
+       			 	<!-- Target the production classes -->
+        			<targetClasses>
+            			<param>maven.*</param>
+        			</targetClasses>
+
+        			<!-- Target only test classes, e.g., those ending with Test -->
+        			<targetTests>
+            			<param>maven.*</param>
+        			</targetTests>
+    			</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 </project>
